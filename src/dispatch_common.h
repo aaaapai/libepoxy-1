@@ -194,6 +194,8 @@ extern epoxy_resolver_failure_handler_t epoxy_resolver_failure_handler;
 #if USING_DISPATCH_TABLE
 void gl_init_dispatch_table(void);
 void gl_switch_to_dispatch_table(void);
+void egl_init_dispatch_table(void);
+void egl_switch_to_dispatch_table(void);
 void wgl_init_dispatch_table(void);
 void wgl_switch_to_dispatch_table(void);
 extern uint32_t gl_tls_index, gl_tls_size;
