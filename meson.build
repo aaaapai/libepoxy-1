@@ -70,9 +70,9 @@ common_cflags = cc.get_supported_arguments(test_cflags)
 libtype = 'static'
 
 # Dependencies
-egl_dep = dependency('egl', required: true)
+egl_dep = cc.find_library('libEGL', required: true)
 egl_headers_dep = egl_dep.partial_dependency(compile_args: true, includes: true)
-gles2_dep = dependency('glesv2', required: true)
+gles2_dep = cc.find_library('libGLESv2', required: true)
 
 # Generates the dispatch tables
 gen_dispatch_py = find_program('src/gen_dispatch.py')
