@@ -70,7 +70,6 @@ common_cflags = cc.get_supported_arguments(test_cflags)
 libtype = 'static'
 
 # Dependencies
-gl_dep = cc.find_library('libGL', required: false)
 egl_dep = cc.find_library('libEGL', required: true)
 egl_headers_dep = egl_dep.partial_dependency(compile_args: true, includes: true)
 gles2_dep = cc.find_library('libGLESv2', required: true)
