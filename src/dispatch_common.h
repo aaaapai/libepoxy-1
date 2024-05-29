@@ -22,7 +22,11 @@
  */
 
 #include "config.h"
-
+#ifdef __GNUC__
+#define EPOXY_THREADLOCAL __thread
+#elif defined (_MSC_VER)
+#define EPOXY_THREADLOCAL __declspec(thread)
+#endif
 #ifdef _WIN32
 #define PLATFORM_HAS_EGL ENABLE_EGL
 #define PLATFORM_HAS_GLX ENABLE_GLX
@@ -190,6 +194,8 @@ extern epoxy_resolver_failure_handler_t epoxy_resolver_failure_handler;
 #if USING_DISPATCH_TABLE
 void gl_init_dispatch_table(void);
 void gl_switch_to_dispatch_table(void);
+void egl_init_dispatch_table(void);
+void egl_switch_to_dispatch_table(void);
 void wgl_init_dispatch_table(void);
 void wgl_switch_to_dispatch_table(void);
 extern uint32_t gl_tls_index, gl_tls_size;
