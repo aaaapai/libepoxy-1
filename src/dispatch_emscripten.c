@@ -7,7 +7,7 @@
  */
 
 #include <epoxy/common.h>
-#include <include/gl32.h>
+#include <GLES3/gl32.h>
 #include <string.h>
 
 EPOXY_PUBLIC void *
