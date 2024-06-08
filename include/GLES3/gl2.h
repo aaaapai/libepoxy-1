@@ -1,5 +1,5 @@
-#ifndef __gles2_gl32_h_
-#define __gles2_gl32_h_ 1
+#ifndef __gles2_gl2_h_
+#define __gles2_gl2_h_ 1
 
 #ifdef __cplusplus
 extern "C" {
@@ -15,7 +15,7 @@ extern "C" {
 **   https://github.com/KhronosGroup/OpenGL-Registry
 */
 
-#include <GLES3/gl3platform.h>
+#include <GLES2/gl3platform.h>
 
 #ifndef GL_APIENTRYP
 #define GL_APIENTRYP GL_APIENTRY*
