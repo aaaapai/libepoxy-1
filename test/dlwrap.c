@@ -66,7 +66,7 @@ static struct libwrap {
 } wrapped_libs[] = {
     { "libGL.so", "GL", NULL },
     { "libEGL.so", "EGL", NULL },
-    { "libGLESv2.so", "GLES2", NULL },
+    { "libGLESv3.so", "GLES3", NULL },
     { "libOpenGL.so", "GL", NULL},
 };
 
@@ -309,7 +309,7 @@ override_EGL_eglGetProcAddress(const char *name)
     void *symbol;
 
     if (!STRNCMP_LITERAL(name, "gl")) {
-        symbol = wrapped_dlsym("GLES2", name);
+        symbol = wrapped_dlsym("GLES3", name);
         if (symbol)
             return symbol;
     }
