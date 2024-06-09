@@ -165,8 +165,8 @@ endif
 
 # Dependencies
 dl_dep = cc.find_library('dl', required: false)
-gl_dep = dependency('gl', required: false)
-egl_dep = dependency('egl', required: false)
+gl_dep = cc.find_library('gl', required: false)
+egl_dep = cc.find_library('egl', required: false)
 elg_headers_dep = egl_dep.partial_dependency(compile_args: true, includes: true)
 
 # Optional dependencies for tests
@@ -176,9 +176,9 @@ x11_headers_dep = x11_dep.partial_dependency(compile_args: true, includes: true)
 # GLES v2 and v1 may have pkg-config files, courtesy of downstream
 # packagers; let's check those first, and fall back to find_library()
 # if we fail
-gles2_dep = dependency('glesv2', required: false)
-if not gles2_dep.found()
-  gles2_dep = cc.find_library('libGLESv2', required: false)
+gles3_dep = dependency('glesv3', required: false)
+if not gles3_dep.found()
+  gles3_dep = cc.find_library('libGLESv3', required: false)
 endif
 
 gles1_dep = dependency('glesv1_cm', required: false)
