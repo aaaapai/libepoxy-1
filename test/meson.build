@@ -2,7 +2,7 @@ dl_dep = cc.find_library('dl', required: false)
 has_dlvsym = cc.has_function('dlvsym', dependencies: dl_dep)
 
 has_gles1 = gles1_dep.found()
-has_gles2 = gles2_dep.found()
+has_gles3 = gles3_dep.found()
 build_x11_tests = enable_x11 and x11_dep.found()
 
 test_cflags = common_cflags
@@ -53,7 +53,7 @@ if build_egl and build_x11_tests
     [ 'egl_has_extension_nocontext', [], [ 'egl_has_extension_nocontext.c' ], true, ],
     [ 'egl_epoxy_api', [], [ 'egl_epoxy_api.c' ], true ],
     [ 'egl_gles1_without_glx', [ '-DGLES_VERSION=1', ], [ 'egl_without_glx.c' ], has_gles1, ],
-    [ 'egl_gles2_without_glx', [ '-DGLES_VERSION=2', ], [ 'egl_without_glx.c' ], has_gles2, ],
+    [ 'egl_gles3_without_glx', [ '-DGLES_VERSION=3', ], [ 'egl_without_glx.c' ], has_gles3, ],
   ]
 
   if build_glx
@@ -105,7 +105,7 @@ if build_glx and build_x11_tests
     [ 'glx_static', [ 'glx_static.c' ], [ '-DNEEDS_TO_BE_STATIC'], [ '-static' ], libtype == 'static' ],
     [ 'glx_shared_znow', [ 'glx_static.c', ], [], [ '-Wl,-z,now' ], has_znow ],
     [ 'glx_alias_prefer_same_name', [ 'glx_alias_prefer_same_name.c', 'dlwrap.c', 'dlwrap.h' ], [], [ '-rdynamic' ], has_dlvsym ],
-    [ 'glx_gles2', [ 'glx_gles2.c', 'dlwrap.c', 'dlwrap.h' ], [], [ '-rdynamic' ], has_dlvsym ],
+    [ 'glx_gles3', [ 'glx_gles3.c', 'dlwrap.c', 'dlwrap.h' ], [], [ '-rdynamic' ], has_dlvsym ],
   ]
 
   foreach test: glx_tests
